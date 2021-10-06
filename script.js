@@ -1,26 +1,13 @@
-// Computer generates output
-    // Computer generates random numder from 1 to 3
-    // Computer return value from array
 
 function computerPlay() {
-    const gameValues = ['rock', 'paper', 'scisssors'];
+    const gameValues = ['rock', 'paper', 'scissors'];
     return gameValues[Math.round(Math.random()*2)];
 }
 
-// User input his selection
+function playRound() {
+    const playerSelection = prompt('Your choice:');
+    const computerSelection = computerPlay();
 
-const playerSelection = 'paper';
-const computerSelection = computerPlay();
-
-// Computer give results of the round
-    // Computer recieve two values
-    // Computer compares two values and print result
-        // If selections equal, than draw
-        // if player - rock && computer - scissors = win
-            // else lose
-        // ... to more selections
-
-function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return `You: ${playerSelection} | Computer: ${computerSelection}. DRAW!`;
     }
@@ -35,3 +22,13 @@ function playRound(playerSelection, computerSelection) {
         return `You: ${playerSelection} | Computer: ${computerSelection}. You LOSE!`
     }
 }
+
+function game() {
+    let roundCounter = 1;
+    while (roundCounter <= 5) {
+        console.log(`Round ${roundCounter} | ${playRound()}`);
+        roundCounter++;
+    }
+}
+
+game();
