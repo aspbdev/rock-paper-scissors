@@ -1,10 +1,20 @@
 
+const playerSelections = document.querySelectorAll('.player-choice');
+const gameResult = document.querySelector('.game-result');
+
+playerSelections.forEach(selection => selection.addEventListener('click', () => {
+    gameResult.textContent = playRound(selection.id);
+}));
+
 function computerPlay() {
     const gameValues = ['rock', 'paper', 'scissors'];
     return gameValues[Math.round(Math.random()*2)];
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+
+    const computerSelection = computerPlay();
+
     const roundChoises = `You: ${playerSelection} | Computer: ${computerSelection}.`
 
     if (playerSelection === computerSelection) {
@@ -21,15 +31,3 @@ function playRound(playerSelection, computerSelection) {
         return `${roundChoises} You LOSE!`
     }
 }
-
-function game() {
-    let roundCounter = 1;
-    while (roundCounter <= 5) {
-        const playerSelection = prompt('Your choice:');
-        const computerSelection = computerPlay();
-        console.log(`Round ${roundCounter} | ${playRound(playerSelection, computerSelection)}`);
-        roundCounter++;
-    }
-}
-
-game();
